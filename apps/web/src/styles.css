@@ -1,0 +1,133 @@
+@import "../../../packages/design-tokens/tokens.css";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.app-nav {
+  border-right: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-canvas);
+  padding: var(--space-6);
+}
+
+.app-main {
+  display: grid;
+  grid-template-rows: 64px 1fr;
+}
+
+.app-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  border-bottom: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-surface-1);
+}
+
+.page {
+  padding: var(--space-6);
+  display: grid;
+  gap: var(--space-6);
+}
+
+.panel,
+.kpi-card {
+  background: var(--color-bg-surface-1);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.panel-header,
+.panel-body,
+.kpi-card {
+  padding: var(--space-5);
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.kpi-label {
+  font-size: var(--font-size-13);
+  color: var(--color-text-muted);
+}
+
+.kpi-value {
+  margin-top: var(--space-3);
+  font-size: var(--font-size-32);
+  font-weight: 700;
+}
+
+.btn {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  background: var(--color-bg-surface-2);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.btn-primary {
+  border-color: transparent;
+  background: var(--color-primary-600);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: var(--font-size-14);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-12);
+  font-weight: 600;
+}
+
+.chip-success {
+  color: var(--color-text-primary);
+  background: color-mix(in srgb, var(--color-success-500) 18%, transparent);
+}
+
+.chip-warning {
+  color: var(--color-text-primary);
+  background: color-mix(in srgb, var(--color-warning-500) 18%, transparent);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
