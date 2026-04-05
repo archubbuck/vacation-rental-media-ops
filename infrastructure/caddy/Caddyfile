@@ -1,0 +1,21 @@
+{
+  email you@example.com
+}
+
+your-public-domain.example {
+  encode gzip
+
+  @webhooks path /webhooks/*
+  handle @webhooks {
+    reverse_proxy api:3000
+  }
+
+  @api path /api/* /oauth/*
+  handle @api {
+    reverse_proxy api:3000
+  }
+
+  handle {
+    reverse_proxy web:4200
+  }
+}
