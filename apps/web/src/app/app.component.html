@@ -1,0 +1,81 @@
+<div class="app-shell">
+  <aside class="app-nav">
+    <div style="font-size: var(--font-size-20); font-weight: 700; margin-bottom: var(--space-6);">
+      VR Media Ops
+    </div>
+
+    <div style="display: grid; gap: var(--space-2); color: var(--color-text-secondary);">
+      <div>Dashboard</div>
+      <div>Clients</div>
+      <div>Properties</div>
+      <div>Media Ops</div>
+      <div>Automation</div>
+      <div>Publishing</div>
+      <div>Billing</div>
+      <div>Admin</div>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <div>
+        <div style="font-size: var(--font-size-18); font-weight: 600;">Operations Dashboard</div>
+        <div style="font-size: var(--font-size-13); color: var(--color-text-muted);">Portfolio health, exceptions, and publish activity</div>
+      </div>
+      <button class="btn btn-primary focus-ring">Run Portfolio Scan</button>
+    </header>
+
+    <main class="page">
+      <section class="kpi-grid">
+        @for (kpi of kpis(); track kpi.label) {
+          <div class="kpi-card">
+            <div class="kpi-label">{{ kpi.label }}</div>
+            <div class="kpi-value">{{ kpi.value }}</div>
+            <div style="margin-top: var(--space-3); color: var(--color-text-secondary); font-size: var(--font-size-13);">
+              {{ kpi.trend }}
+            </div>
+          </div>
+        }
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <div style="font-size: var(--font-size-18); font-weight: 600;">Listing Health</div>
+            <div style="font-size: var(--font-size-13); color: var(--color-text-muted);">Prioritize weak photo sets and coverage gaps</div>
+          </div>
+          <button class="btn focus-ring">Open Review Queue</button>
+        </div>
+
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Channel</th>
+                <th>Readiness</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (listing of listings(); track listing.name) {
+                <tr>
+                  <td>{{ listing.name }}</td>
+                  <td>{{ listing.channel }}</td>
+                  <td>{{ listing.readiness }}</td>
+                  <td>
+                    @if (listing.status === 'Healthy') {
+                      <span class="chip chip-success">{{ listing.status }}</span>
+                    } @else {
+                      <span class="chip chip-warning">{{ listing.status }}</span>
+                    }
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
